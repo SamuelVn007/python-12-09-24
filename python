@@ -1,18 +1,23 @@
-class Importação:
-    def __init__(self, nome_carro, pais_Origem) -> None:
+class Carro:
+    carros = []
+
+    def __init__(self, nome_carro, pais_origem):
         self.nome_carro = nome_carro
-        self.pais_Origem = pais_Origem
-        self.ativo = False
+        self.pais_origem = pais_origem
+        self.ativo = True
+        Carro.carros.append(self);
 
-def __str__(self):
-    return f'{self.nome_carro} | {self.pais_Origem}'
+    def __str__(self):
+        return f'{self.nome_carro} | {self.ativo}'
+    
+    def listar_carro():
+        for carros in Carro.carros:
+            print(f'{carros.nome_carro} | {carros.pais_origem} | {carros.ativo}')
 
-carro_mustang = Importação('Mustang', 'Estados Unidos')
-carro_ferrari = Importação('Ferrari','Itália',)
+carro_mustang = Carro('Mustang', 'Estados Unidos')
+carro_ferrari = Carro('Ferrari', 'Itália')
 
 
-Importação = [carro_mustang]
-Importação = [carro_ferrari]
+carro = [carro_mustang, carro_ferrari]
 
-print [carro_ferrari]
-print [carro_mustang]
+Carro.listar_carro();
