@@ -4,15 +4,31 @@ class Carro:
     def __init__(self, nome_carro, pais_origem):
         self.nome_carro = nome_carro
         self.pais_origem = pais_origem
-        self.ativo = True
+        self._ativo = True
         Carro.carros.append(self);
 
     def __str__(self):
         return f'{self.nome_carro} | {self.ativo}'
     
     def listar_carro():
+        print('')
+        print('''    
+░██████╗░░█████╗░██████╗░██████╗░░█████╗░░██████╗░███████╗███╗░░░███╗
+██╔════╝░██╔══██╗██╔══██╗██╔══██╗██╔══██╗██╔════╝░██╔════╝████╗░████║
+██║░░██╗░███████║██████╔╝██████╔╝███████║██║░░██╗░█████╗░░██╔████╔██║
+██║░░╚██╗██╔══██║██╔══██╗██╔══██╗██╔══██║██║░░╚██╗██╔══╝░░██║╚██╔╝██║
+╚██████╔╝██║░░██║██║░░██║██║░░██║██║░░██║╚██████╔╝███████╗██║░╚═╝░██║
+░╚═════╝░╚═╝░░╚═╝╚═╝░░╚═╝╚═╝░░╚═╝╚═╝░░╚═╝░╚═════╝░╚══════╝╚═╝░░░░░╚═╝
+              ''')
+        print(f'{"Nome do Carro".ljust(5)} | {"País de Origem".ljust(5)}')
+        print('----------------------------------------------------------------------')
         for carros in Carro.carros:
-            print(f'{carros.nome_carro} | {carros.pais_origem} | {carros.ativo}')
+            print(f'{carros.nome_carro}    |   {carros.pais_origem}    |{carros.ativo}')
+        print('---------------------------------------------------------------------')
+
+    @property
+    def ativo(self):
+        return   '✅ Veio desse pais' if self._ativo else '❎ Não veio desse país'     
 
 carro_mustang = Carro('Mustang', 'Estados Unidos')
 carro_ferrari = Carro('Ferrari', 'Itália')
