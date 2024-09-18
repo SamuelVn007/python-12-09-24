@@ -24,15 +24,15 @@ class Carro:
 ╚██████╔╝██║░░██║██║░░██║██║░░██║██║░░██║╚██████╔╝███████╗██║░╚═╝░██║
 ░╚═════╝░╚═╝░░╚═╝╚═╝░░╚═╝╚═╝░░╚═╝╚═╝░░╚═╝░╚═════╝░╚══════╝╚═╝░░░░░╚═╝
               ''')
-        print(f'{"Nome do Carro".ljust(13)}      |   {"País de Origem".ljust(13)}       |{"Valor".ljust(13)}       |{"criador".ljust(13)}')
+        print(f'{"Nome do Carro".ljust(17)}|{"País de Origem".ljust(40)}|{"Valor".ljust(20)}')
         print('----------------------------------------------------------------------')
         for carros in cls.carros:
-            print(f'{carros._nome_carro.ljust(13)}| {carros._pais_origem.ljust(12)} | {carros.ativo.ljust(13)} | {carros.media_valor}')
+            print(f'{carros._nome_carro.ljust(17)}| {carros._pais_origem.ljust(12)} | {carros.ativo.ljust(15)}s | {carros.media_valor}')
         print('---------------------------------------------------------------------')
 
     @property
     def ativo(self):
-        return   '✅ Veio desse pais' if self._ativo else '❎ Não veio desse país'     
+        return   '✅ Veio desse paí' if self._ativo else '❎ Não veio desse paí'     
     
     def alterar_estado(self):
         self._ativo = not self._ativo
