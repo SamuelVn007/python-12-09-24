@@ -1,3 +1,5 @@
+from modelo.preco import Preco
+
 class Carro:
     carros = []
 
@@ -5,6 +7,7 @@ class Carro:
         self._nome_carro = nome_carro.title()
         self._pais_origem = pais_origem.title()
         self._ativo = True
+        self._preco = [] 
         Carro.carros.append(self);
 
     def __str__(self):
@@ -21,10 +24,10 @@ class Carro:
 ╚██████╔╝██║░░██║██║░░██║██║░░██║██║░░██║╚██████╔╝███████╗██║░╚═╝░██║
 ░╚═════╝░╚═╝░░╚═╝╚═╝░░╚═╝╚═╝░░╚═╝╚═╝░░╚═╝░╚═════╝░╚══════╝╚═╝░░░░░╚═╝
               ''')
-        print(f'{"Nome do Carro".ljust(5)}      |   {"País de Origem".ljust(5)}')
+        print(f'{"Nome do Carro".ljust(13)}      |   {"País de Origem".ljust(13)}       |{"Valor".ljust(13)}       |{"criador".ljust(13)}')
         print('----------------------------------------------------------------------')
         for carros in cls.carros:
-            print(f'{carros._nome_carro}            |   {carros._pais_origem}        |{carros.ativo}')
+            print(f'{carros._nome_carro.ljust(13)}| {carros._pais_origem.ljust(12)} | {carros.ativo.ljust(13)} | {carros.media_valor}')
         print('---------------------------------------------------------------------')
 
     @property
@@ -34,3 +37,15 @@ class Carro:
     def alterar_estado(self):
         self._ativo = not self._ativo
         
+    def receber_preco(self, criador, valor):
+        preco = Preco(criador, valor)
+        self._preco.append(preco)
+        
+    @property
+    def media_valor(self):
+        if not self._preco:
+            return 0
+        soma_dos_valores = sum(preco._valor for preco in self._preco)
+        quantidade_valor = len(self._preco)
+        media = round(soma_dos_valores / quantidade_valor)
+        return media
